@@ -15,4 +15,4 @@ CREATE TABLE product (
 );
 
 INSERT INTO product(name, brand, size, color, description, quantity, price, gender)
-  VALUES('Airmax', 'Nike', '42', 'blue', 'Very nice shoes', '1', '1000,00', 'male');
+  VALUES('Airmax', 'Nike', '42', 'blue', 'Very nice shoes', '1', '1000.00', 'male');
