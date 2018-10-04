@@ -5,6 +5,7 @@ API for Products
 ### GET Products
 Method: GET
 Path: /api/products
+
 Response:
  ```json
 {
@@ -21,6 +22,7 @@ Response:
  ### POST Products
  Method: POST
 Path: /api/products/new
+
 Request:
  ```json
 {
