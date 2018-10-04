@@ -1,22 +1,28 @@
 # Products
-API for Products
+API DOCUMENTATION FOR PRODUCTS
 
-This file contains relevant information about the database tables structure and columns.
+### Get Products
 
-List of columns needed:
-- ID
-- Name
-- Brand
-- Size
-- Color
-- Description
-- Quantity
-- Price
-- Gender (Male/ Female)
+Method: GET
+Path: /api/products
 
-## Developers
-Miller
-Kallman
-Lönnroth
-Musick
-Jonas
+### Post Products
+
+Method: POST
+Path: /api/products/new
+Request:
+
+```
+{
+    "name": "Airmax"
+    "brand": "Nike",
+    "size": 42,
+    "color": "blue",
+    "description": "Very nice shoes",
+    "quantity": 1,
+    "price": 1000.00,
+    "gender": "male"
+}
+```
+
+
