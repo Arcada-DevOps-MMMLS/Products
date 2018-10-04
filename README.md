@@ -5,7 +5,7 @@ API for Products
  Method: GET
 Path: /api/products
 Response:
- ```
+ ```json
 {
     "name": "Airmax"
     "brand": "Nike",
@@ -21,7 +21,7 @@ Response:
  Method: POST
 Path: /api/products/new
 Request:
- ```
+ ```json
 {
     "name": "Airmax"
     "brand": "Nike",
