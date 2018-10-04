@@ -67,10 +67,10 @@ router.post('/api/products/new', (req, res, next) => {
   });
 });
 
-router.delete('/api/products/delete', (req, res, next) => {
+router.delete('/api/products/delete/:id', (req, res, next) => {
   const results = [];
   // Grab data from the URL parameters
-  const id = req.params.todo_id;
+  const id = req.params.id;
   // Get a Postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     // Handle connection errors
