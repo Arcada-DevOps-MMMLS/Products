@@ -28,7 +28,6 @@ router.get('/api/products', (req, res, next) => {
     });
   });
 });
-INSERT INTO product(name, brand, size, color, description, quantity, price, gender)
 
 router.post('/api/products/new', (req, res, next) => {
   const results = [];
