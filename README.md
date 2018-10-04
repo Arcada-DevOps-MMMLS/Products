@@ -4,6 +4,7 @@ API for Products
 
 ### GET Products
 Method: GET
+
 Path: /api/products
 
 Response:
@@ -21,6 +22,7 @@ Response:
 ```
  ### POST Products
  Method: POST
+ 
 Path: /api/products/new
 
 Request:
@@ -39,10 +41,12 @@ Request:
 
  ### DELETE Product
  Method: DELETE
+ 
  Path: /api/products/new/ID to delete
 
  ### UPDATE Product
  Method: PUT
+ 
  Path: /api/products/update/ID to update
  
 Request:
