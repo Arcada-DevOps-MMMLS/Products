@@ -7,7 +7,7 @@ Path: /api/products
 Response:
  ```json
 {
-    "name": "Airmax"
+    "name": "Airmax",
     "brand": "Nike",
     "size": 42,
     "color": "blue",
@@ -23,7 +23,7 @@ Path: /api/products/new
 Request:
  ```json
 {
-    "name": "Airmax"
+    "name": "Airmax",
     "brand": "Nike",
     "size": 42,
     "color": "blue",
