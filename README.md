@@ -1,9 +1,12 @@
+
 # Products
 API for Products
 
-### Get Products
- Method: GET
+### GET Products
+Method: GET
+
 Path: /api/products
+
 Response:
  ```json
 {
@@ -17,9 +20,11 @@ Response:
     "gender": "male"
 }
 ```
- ### Post Products
+ ### POST Products
  Method: POST
+ 
 Path: /api/products/new
+
 Request:
  ```json
 {
@@ -33,3 +38,30 @@ Request:
     "gender": "male"
 }
 ```
+
+ ### DELETE Product
+ Method: DELETE
+ 
+ Path: /api/products/new/ID to delete
+
+ ### UPDATE Product
+ Method: PUT
+ 
+ Path: /api/products/update/ID to update
+ 
+Request:
+ ```
+{
+    "name": "Airmax"
+    "brand": "Nike",
+    "size": 42,
+    "color": "blue",
+    "description": "Very nice shoes",
+    "quantity": 1,
+    "price": 1000.00,
+    "gender": "male"
+}
+```
+
+
+
