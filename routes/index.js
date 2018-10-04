@@ -32,7 +32,16 @@ router.get('/api/products', (req, res, next) => {
 router.post('/api/products/new', (req, res, next) => {
   const results = [];
   // Grab data from http request
-  const data = {text: req.body.text, complete: false};
+  const data = {
+    name: req.body.name,
+    brand: req.body.brand,
+    size: req.body.size,
+    color: req.body.color,
+    description: req.body.description,
+    quantity: req.body.quantity,
+    price: req.body.price,
+    gender: req.body.gender
+  };
   // Get a Postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
     // Handle connection errors
