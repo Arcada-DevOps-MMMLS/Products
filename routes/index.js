@@ -122,7 +122,7 @@ router.put('/api/products/update/:id', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Update Data
-    client.query('UPDATE product SET name=($1), brand=($2), size=($3), color=($4), description=($5), quantity($6), price=($7), gender=($8) WHERE id=($9)',
+    client.query('UPDATE product SET name=($1), brand=($2), size=($3), color=($4), description=($5), quantity=($6), price=($7), gender=($8) WHERE id=($9)',
     [data.name, data.brand, data.size, data.color, data.description, data.quantity, data.price, data.gender, id]);
     // SQL Query > Select Data
     const query = client.query("SELECT * FROM items ORDER BY id ASC");
