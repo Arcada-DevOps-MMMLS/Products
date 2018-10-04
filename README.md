@@ -42,6 +42,7 @@ Request:
  ### UPDATE Product
  Method: PUT
  Path: /api/products/update/ID to update
+ 
 Request:
  ```
 {
