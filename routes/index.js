@@ -42,8 +42,8 @@ router.post('/api/products/new', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Insert Data
-    client.query('INSERT INTO product(name, brand, size, color, description, quantity, price, gender) values($1, $2, $3, $4, $5, $6, $7, $8)',
-    [data.text, data.complete]);
+    client.query('INSERT INTO product(name, brand, size, color, description, quantity, price, gender)',
+    [data.name, data.brand, data.size, data.color, data.description, data.quantity, data.price, data.gender]);
     // SQL Query > Select Data
     const query = client.query('SELECT * FROM product ORDER BY id ASC');
     // Stream results back one row at a time
