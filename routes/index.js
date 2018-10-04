@@ -28,5 +28,35 @@ router.get('/api/products', (req, res, next) => {
     });
   });
 });
+INSERT INTO product(name, brand, size, color, description, quantity, price, gender)
+
+router.post('/api/products/new', (req, res, next) => {
+  const results = [];
+  // Grab data from http request
+  const data = {text: req.body.text, complete: false};
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    // SQL Query > Insert Data
+    client.query('INSERT INTO product(name, brand, size, color, description, quantity, price, gender) values($1, $2, $3, $4, $5, $6, $7, $8)',
+    [data.text, data.complete]);
+    // SQL Query > Select Data
+    const query = client.query('SELECT * FROM product ORDER BY id ASC');
+    // Stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    // After all data is returned, close connection and return results
+    query.on('end', () => {
+      done();
+      return res.json(results);
+    });
+  });
+});
 
 module.exports = router;
