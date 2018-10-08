@@ -9,7 +9,8 @@ Path: /api/products
 
 Response:
  ```json
-{
+[{
+    "id": 1,
     "name": "Airmax",
     "brand": "Nike",
     "size": 42,
@@ -18,7 +19,7 @@ Response:
     "quantity": 1,
     "price": 1000.00,
     "gender": "male"
-}
+}]
 ```
  ### POST Products
  Method: POST
@@ -27,7 +28,7 @@ Path: /api/products/new
 
 Request:
  ```json
-{
+[{
     "name": "Airmax",
     "brand": "Nike",
     "size": 42,
@@ -36,13 +37,13 @@ Request:
     "quantity": 1,
     "price": 1000.00,
     "gender": "male"
-}
+}]
 ```
 
  ### DELETE Product
  Method: DELETE
  
- Path: /api/products/new/ID to delete
+ Path: /api/products/delete/ID to delete
 
  ### UPDATE Product
  Method: PUT
@@ -51,7 +52,7 @@ Request:
  
 Request:
  ```
-{
+[{
     "name": "Airmax"
     "brand": "Nike",
     "size": 42,
@@ -60,7 +61,7 @@ Request:
     "quantity": 1,
     "price": 1000.00,
     "gender": "male"
-}
+}]
 ```
 
 
