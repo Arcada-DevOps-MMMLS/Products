@@ -1,6 +1,6 @@
 CREATE DATABASE products;
 
-\c products;
+/*\c products;*/
 
 CREATE TABLE product (
   ID SERIAL PRIMARY KEY,
