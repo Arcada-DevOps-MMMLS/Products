@@ -12,12 +12,13 @@ router.get('/', function(req, res, next) {
 //GET products
 router.get('/api/products', (req, res, next) => {
   const results = [];
-  const headerData = {
+  /*const headerData = {
     name: req.header.name,
     password: req.header.password
   };
 
   authCheck(headerData.name, headerData.password);
+  */
 
   // Get a Postgres client from the connection pool
   pg.connect(connectionString, (err, client, done) => {
@@ -150,9 +151,11 @@ router.put('/api/products/update/:id', (req, res, next) => {
   });
 });
 
+/*
 function authCheck(name, password){
   return client.query('SELECT * FROM userTable WHERE name=($1) AND password=($2)',
   [req.header.name, req.header.password]);
 }
+*/
 
 module.exports = router;
