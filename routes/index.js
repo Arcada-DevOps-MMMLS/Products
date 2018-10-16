@@ -42,6 +42,34 @@ router.get('/api/products', (req, res, next) => {
   });
 });
 
+//Get a single product
+router.get('/api/product/:id', (req, res, next) => {
+  const results = [];
+  const id = req.params.id;
+
+  // Get a Postgres client from the connection pool
+  pg.connect(connectionString, (err, client, done) => {
+    // Handle connection errors
+    if(err) {
+      done();
+      console.log(err);
+      return res.status(500).json({success: false, data: err});
+    }
+    // SQL Query > Select Data
+    const query = client.query('SELECT * FROM product where id = $1;', [id]);
+    // Stream results back one row at a time
+    query.on('row', (row) => {
+      results.push(row);
+    });
+    // After all data is returned, close connection and return results
+    query.on('end', () => {
+      done();
+      return res.json(results);
+    });
+  });
+});
+
+
 //POST a new product
 router.post('/api/products/new', (req, res, next) => {
   const results = [];
