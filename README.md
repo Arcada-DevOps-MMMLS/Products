@@ -22,10 +22,10 @@ Response:
 }]
 ```
 
-### GET Product
+### GET a specific product
 Method: GET
 
-Path: /api/products/ID
+Path: /api/product/ID
 
 Response:
  ```json
