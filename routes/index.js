@@ -52,16 +52,16 @@ app.post('/authenticate',(req,res)=>{
           });
 
         }else{
-            res.json({message:"please check your password !"})
+            res.json({message:"please check your password !"});
         }
 
     }else{
 
-        res.json({message:"user not found !"})
+        res.json({message:"user not found !"});
 
     }
 
-})
+});
 
 
 //GET products
