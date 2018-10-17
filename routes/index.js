@@ -6,7 +6,7 @@ const connectionString = process.env.DATABASE_URL || 'postgres://sgjlqretcezzmh:
 bodyParser = require('body-parser'),
 morgan      = require('morgan'),
 jwt    = require('jsonwebtoken'),
-config = require('./configurations/config'),
+config = require('../configurations/config'),
 app = express();
 
 //set secret
