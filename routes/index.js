@@ -97,6 +97,8 @@ router.get('/api/products', (req, res, next) => {
         return res.json(results);
       });
     });
+  }else{
+    res.render('error');
   }
 });
 
