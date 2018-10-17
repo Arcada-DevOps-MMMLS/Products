@@ -61,7 +61,7 @@ app.post('/authenticate',(req,res)=>{
 
     }
 
-})
+});
 
 
 //GET products
