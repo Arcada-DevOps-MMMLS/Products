@@ -10,22 +10,16 @@ config = require('../configurations/config'),
 app = express();
 
 //set secret
-router.set('Secret', config.secret);
+app.set('Secret', config.secret);
 
 // use morgan to log requests to the console
-router.use(morgan('dev'));
+app.use(morgan('dev'));
 
 // parse application/x-www-form-urlencoded
-router.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse application/json
-router.use(bodyParser.json());
-
-router.listen(3000,()=>{
-
- console.log('server is running on port 3000')
-
-});
+app.use(bodyParser.json());
 
 //GET home page.
 router.get('/', function(req, res, next) {
@@ -33,7 +27,7 @@ router.get('/', function(req, res, next) {
 });
 
 //Authenticate user
-router.post('/authenticate',(req,res)=>{
+app.post('/authenticate',(req,res)=>{
 
     if(req.header.username==="frontend"){
 
@@ -46,7 +40,7 @@ router.post('/authenticate',(req,res)=>{
 
           };
 
-          var token = jwt.sign(payload, router.get('Secret'), {
+          var token = jwt.sign(payload, app.get('Secret'), {
                 expiresIn: 1440 // expires in 24 hours
 
           });
