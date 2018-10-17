@@ -250,29 +250,29 @@ function authCheck(name, password){
 
         };
 
-        var token = jwt.sign(payload, app.get('Secret'), {
+        /*var token = jwt.sign(payload, app.get('Secret'), {
               expiresIn: 1440 // expires in 24 hours
 
-        });
+        });*/
 
 
-        res.json({
+        /*res.json({
           message: 'authentication done ',
           token: token
-        });
+        });*/
         return true;
 
       }else{
-          res.json({message:"please check your password !"});
+          //res.json({message:"please check your password !"});
           return false;
       }
 
-  }else{
+  }/*else{
 
-      res.json({message:"user not found !"});
+      //res.json({message:"user not found !"});
       return false;
 
-  }
+  }*/
 }
 
 module.exports = router;
