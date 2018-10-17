@@ -26,6 +26,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+/*
 //Authenticate user
 router.post('/authenticate',(req,res)=>{
 
@@ -62,39 +63,41 @@ router.post('/authenticate',(req,res)=>{
     }
 
 });
-
+*/
 
 //GET products
 router.get('/api/products', (req, res, next) => {
+
   const results = [];
-  /*const headerData = {
-    name: req.header.name,
+  const headerData = {
+    name: req.header.username,
     password: req.header.password
   };
 
-  authCheck(headerData.name, headerData.password);
-  */
+  isAuthenticated = authCheck(headerData.name, headerData.password);
 
-  // Get a Postgres client from the connection pool
-  pg.connect(connectionString, (err, client, done) => {
-    // Handle connection errors
-    if(err) {
-      done();
-      console.log(err);
-      return res.status(500).json({success: false, data: err});
-    }
-    // SQL Query > Select Data
-    const query = client.query('SELECT * FROM product;');
-    // Stream results back one row at a time
-    query.on('row', (row) => {
-      results.push(row);
+  if(isAuthenticated){
+    // Get a Postgres client from the connection pool
+    pg.connect(connectionString, (err, client, done) => {
+      // Handle connection errors
+      if(err) {
+        done();
+        console.log(err);
+        return res.status(500).json({success: false, data: err});
+      }
+      // SQL Query > Select Data
+      const query = client.query('SELECT * FROM product;');
+      // Stream results back one row at a time
+      query.on('row', (row) => {
+        results.push(row);
+      });
+      // After all data is returned, close connection and return results
+      query.on('end', () => {
+        done();
+        return res.json(results);
+      });
     });
-    // After all data is returned, close connection and return results
-    query.on('end', () => {
-      done();
-      return res.json(results);
-    });
-  });
+  }
 });
 
 //Get a single product
@@ -234,11 +237,42 @@ router.put('/api/products/update/:id', (req, res, next) => {
   });
 });
 
-/*
+
 function authCheck(name, password){
-  return client.query('SELECT * FROM userTable WHERE name=($1) AND password=($2)',
-  [req.header.name, req.header.password]);
+  if(name==="frontend"){
+
+      if(password===123){
+           //if eveything is okey let's create our token
+
+      const payload = {
+
+          check:  true
+
+        };
+
+        var token = jwt.sign(payload, app.get('Secret'), {
+              expiresIn: 1440 // expires in 24 hours
+
+        });
+
+
+        res.json({
+          message: 'authentication done ',
+          token: token
+        });
+        return true;
+
+      }else{
+          res.json({message:"please check your password !"});
+          return false;
+      }
+
+  }else{
+
+      res.json({message:"user not found !"});
+      return false;
+
+  }
 }
-*/
 
 module.exports = router;
