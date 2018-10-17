@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 const pg = require('pg');
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://sgjlqretcezzmh:9e6d09dc7d5064c6200c96932f68c72f42fd236bfbd5836064f2fa0ee4394291@ec2-54-246-101-215.eu-west-1.compute.amazonaws.com:5432/d7svabbdvvn7l1';
@@ -7,7 +8,6 @@ morgan      = require('morgan'),
 jwt    = require('jsonwebtoken'),
 config = require('../configurations/config'),
 app = express();
-const router = app.Router();
 
 //set secret
 app.set('Secret', config.secret);
