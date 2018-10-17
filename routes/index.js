@@ -3,11 +3,72 @@ const router = express.Router();
 const pg = require('pg');
 const path = require('path');
 const connectionString = process.env.DATABASE_URL || 'postgres://sgjlqretcezzmh:9e6d09dc7d5064c6200c96932f68c72f42fd236bfbd5836064f2fa0ee4394291@ec2-54-246-101-215.eu-west-1.compute.amazonaws.com:5432/d7svabbdvvn7l1';
+bodyParser = require('body-parser'),
+morgan      = require('morgan'),
+jwt    = require('jsonwebtoken'),
+config = require('./configurations/config'),
+app = express();
+
+//set secret
+app.set('Secret', config.secret);
+
+// use morgan to log requests to the console
+app.use(morgan('dev'));
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse application/json
+app.use(bodyParser.json());
+
+app.listen(3000,()=>{
+
+ console.log('server is running on port 3000')
+
+});
 
 //GET home page.
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+//Authenticate user
+app.post('/authenticate',(req,res)=>{
+
+    if(req.body.username==="frontend"){
+
+        if(req.body.password===123){
+             //if eveything is okey let's create our token
+
+        const payload = {
+
+            check:  true
+
+          };
+
+          var token = jwt.sign(payload, app.get('Secret'), {
+                expiresIn: 1440 // expires in 24 hours
+
+          });
+
+
+          res.json({
+            message: 'authentication done ',
+            token: token
+          });
+
+        }else{
+            res.json({message:"please check your password !"})
+        }
+
+    }else{
+
+        res.json({message:"user not found !"})
+
+    }
+
+})
+
 
 //GET products
 router.get('/api/products', (req, res, next) => {
