@@ -29,9 +29,31 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-app.use(basicAuth({
-  users: { 'admin': 'supersecret' }
-}))
+
+app.use(basicAuth( { authorizer: myAuthorizer} ))
+
+  function myAuthorizer (username, password) {
+    pg.connect(connectionString, (err, client, done) => {
+      // Handle connection errors
+      if(err) {
+        done();
+        console.log(err);
+        return res.status(500).json({success: false, data: err});
+      }
+      // SQL Query > Select Data
+      const query = client.query('SELECT * FROM usertable;');
+      // Stream results back one row at a time
+      query.on('row', (row) => {
+        results.push(row);
+      });
+
+      for(var i = 0; i < results.size; i++) {
+        if(results.get[i].username == username && esults.get[i].password == password) {
+          return true;
+        }
+      }
+    });
+  }
 
 
 //GET products
@@ -89,11 +111,14 @@ router.get('/api/product/:id', (req, res, next) => {
 });
 
 
+
 //POST a new product
 router.post('/api/products/new', (req, res, next) => {
+      
+  var isAuthenticated = myAuthorizer(req.get(username), req.get(password));
 
-  if (req.body.username == 'test') {
-     
+  if (isAuthenticated) {
+
   const results = [];
   // Grab data from http request
   const data = {
