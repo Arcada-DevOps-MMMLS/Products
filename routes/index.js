@@ -92,7 +92,7 @@ router.get('/api/product/:id', (req, res, next) => {
 //POST a new product
 router.post('/api/products/new', (req, res, next) => {
 
-  if (req.header.username == "test" && req.header.pass == "123") {
+  if (req.header.username == 'test' && req.header.pass == '123') {
      
   const results = [];
   // Grab data from http request
@@ -129,10 +129,8 @@ router.post('/api/products/new', (req, res, next) => {
       return res.json(results);
     });
   });
-}else{
+}else
   res.render('index', { title: 'Express' });
-}
-
 });
 
 //DELETE a product
