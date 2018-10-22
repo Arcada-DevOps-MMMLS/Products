@@ -31,14 +31,7 @@ router.get('/', function(req, res, next) {
 router.get('/api/products', (req, res, next) => {
 
   const results = [];
-  const headerData = {
-    name: req.header.username,
-    password: req.header.password
-  };
 
-  isAuthenticated = authCheck(headerData.name, headerData.password);
-
-  if(isAuthenticated){
     // Get a Postgres client from the connection pool
     pg.connect(connectionString, (err, client, done) => {
       // Handle connection errors
@@ -59,9 +52,6 @@ router.get('/api/products', (req, res, next) => {
         return res.json(results);
       });
     });
-  }else{
-    res.render('error');
-  }
 });
 
 //Get a single product
