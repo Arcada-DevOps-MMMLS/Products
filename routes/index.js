@@ -1,4 +1,7 @@
 const express = require('express');
+
+const basicAuth = require('express-basic-auth');
+
 const router = express.Router();
 const pg = require('pg');
 const path = require('path');
@@ -25,6 +28,10 @@ app.use(bodyParser.json());
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+
+app.use(basicAuth({
+  users: { 'admin': 'supersecret' }
+}))
 
 
 //GET products
@@ -84,6 +91,9 @@ router.get('/api/product/:id', (req, res, next) => {
 
 //POST a new product
 router.post('/api/products/new', (req, res, next) => {
+
+  if (req.header.username == "test" && req.header.pass == "123") {
+     
   const results = [];
   // Grab data from http request
   const data = {
@@ -119,6 +129,10 @@ router.post('/api/products/new', (req, res, next) => {
       return res.json(results);
     });
   });
+}else{
+  res.render('index', { title: 'Express' });
+}
+
 });
 
 //DELETE a product
