@@ -115,6 +115,8 @@ router.get('/api/product/:id', (req, res, next) => {
 //POST a new product
 router.post('/api/products/new', (req, res, next) => {
       
+  console.log(req.get(username));
+
   var isAuthenticated = myAuthorizer(req.get(username), req.get(password));
 
   if (isAuthenticated) {
