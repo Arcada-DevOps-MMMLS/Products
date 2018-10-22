@@ -1,7 +1,7 @@
 const express = require('express');
 
 const basicAuth = require('express-basic-auth');
-
+var private = require('express-http-auth').realm('Private Area');
 const router = express.Router();
 const pg = require('pg');
 const path = require('path');
@@ -28,13 +28,6 @@ app.use(bodyParser.json());
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
-
-
-app.use(basicAuth( { authorizer: myAuthorizer} ))
-
-  function myAuthorizer (username, password) {
-    return username == 'admin' && password == 'admin';
-  }
 
 
 //GET products
@@ -91,12 +84,10 @@ router.get('/api/product/:id', (req, res, next) => {
   });
 });
 
-
-
 //POST a new product
-router.post('/api/products/new', (req, res, next) => {
+router.post('/api/products/new', private, (req, res, next) => {
 
-  myAuthorizer(req.get(username), req.get(password));
+  if (req.username == 'admin' && req.password == 'admin') {
 
   const results = [];
   // Grab data from http request
@@ -133,6 +124,9 @@ router.post('/api/products/new', (req, res, next) => {
       return res.json(results);
     });
   });
+}else {
+  res.send(403);
+}
 });
 
 //DELETE a product
