@@ -130,7 +130,9 @@ router.post('/api/products/new', private, (req, res, next) => {
 });
 
 //DELETE a product
-router.delete('/api/products/delete/:id', (req, res, next) => {
+router.delete('/api/products/delete/:id', private, (req, res, next) => {
+
+  if (req.username == 'admin' && req.password == 'admin') {
   const results = [];
   // Grab data from the URL parameters
   const id = req.params.id;
@@ -156,10 +158,16 @@ router.delete('/api/products/delete/:id', (req, res, next) => {
       return res.json(results);
     });
   });
+  }else {
+    res.send(403);
+  }
 });
 
 //UPDATE a product
-router.put('/api/products/update/:id', (req, res, next) => {
+router.put('/api/products/update/:id', private, (req, res, next) => {
+
+  if (req.username == 'admin' && req.password == 'admin') {
+
   const results = [];
   // Grab data from the URL parameters
   const id = req.params.id;
@@ -197,6 +205,9 @@ router.put('/api/products/update/:id', (req, res, next) => {
       return res.json(results);
     });
   });
+}else {
+  res.send(403);
+}
 });
 
 module.exports = router;
