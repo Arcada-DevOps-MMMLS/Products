@@ -26,44 +26,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/*
-//Authenticate user
-router.post('/authenticate',(req,res)=>{
-
-    if(req.body.username==="frontend"){
-
-        if(req.body.password===123){
-             //if eveything is okey let's create our token
-
-        const payload = {
-
-            check:  true
-
-          };
-
-          var token = jwt.sign(payload, app.get('Secret'), {
-                expiresIn: 1440 // expires in 24 hours
-
-          });
-
-
-          res.json({
-            message: 'authentication done ',
-            token: token
-          });
-
-        }else{
-            res.json({message:"please check your password !"});
-        }
-
-    }else{
-
-        res.json({message:"user not found !"});
-
-    }
-
-});
-*/
 
 //GET products
 router.get('/api/products', (req, res, next) => {
@@ -153,8 +115,8 @@ router.post('/api/products/new', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Insert Data
-    client.query('INSERT INTO product(name, brand, size, color, description, quantity, price, gender) values($1, $2, $3, $4, $5, $6, $7, $8)',
-    [data.name, data.brand, data.size, data.color, data.description, data.quantity, data.price, data.gender]);
+    client.query('INSERT INTO product(name, brand, size, color, description, price, gender) values($1, $2, $3, $4, $5, $6, $7)',
+    [data.name, data.brand, data.size, data.color, data.description, data.price, data.gender]);
     // SQL Query > Select Data
     const query = client.query('SELECT * FROM product ORDER BY id ASC');
     // Stream results back one row at a time
@@ -223,8 +185,8 @@ router.put('/api/products/update/:id', (req, res, next) => {
       return res.status(500).json({success: false, data: err});
     }
     // SQL Query > Update Data
-    client.query('UPDATE product SET name=($1), brand=($2), size=($3), color=($4), description=($5), quantity=($6), price=($7), gender=($8) WHERE id=($9)',
-    [data.name, data.brand, data.size, data.color, data.description, data.quantity, data.price, data.gender, id]);
+    client.query('UPDATE product SET name=($1), brand=($2), size=($3), color=($4), description=($5), price=($6), gender=($7) WHERE id=($8)',
+    [data.name, data.brand, data.size, data.color, data.description, data.price, data.gender, id]);
     // SQL Query > Select Data
     const query = client.query("SELECT * FROM product ORDER BY id ASC");
     // Stream results back one row at a time
@@ -238,43 +200,5 @@ router.put('/api/products/update/:id', (req, res, next) => {
     });
   });
 });
-
-
-function authCheck(name, password){
-  if(name==="frontend"){
-
-      if(password===123){
-           //if eveything is okey let's create our token
-
-      const payload = {
-
-          check:  true
-
-        };
-
-        /*var token = jwt.sign(payload, app.get('Secret'), {
-              expiresIn: 1440 // expires in 24 hours
-
-        });*/
-
-
-        /*res.json({
-          message: 'authentication done ',
-          token: token
-        });*/
-        return true;
-
-      }else{
-          //res.json({message:"please check your password !"});
-          return false;
-      }
-
-  }/*else{
-
-      //res.json({message:"user not found !"});
-      return false;
-
-  }*/
-}
 
 module.exports = router;
