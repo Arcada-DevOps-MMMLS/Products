@@ -16,7 +16,6 @@ Response:
     "size": 42,
     "color": "blue",
     "description": "Very nice shoes",
-    "quantity": 1,
     "price": 1000.00,
     "gender": "male"
 }]
@@ -36,7 +35,6 @@ Response:
     "size": 42,
     "color": "blue",
     "description": "Very nice shoes",
-    "quantity": 1,
     "price": 1000.00,
     "gender": "male"
 }]
@@ -55,7 +53,6 @@ Request:
     "size": 42,
     "color": "blue",
     "description": "Very nice shoes",
-    "quantity": 1,
     "price": 1000.00,
     "gender": "male"
 }]
@@ -74,12 +71,11 @@ Request:
 Request:
  ```json
 [{
-    "name": "Airmax"
+    "name": "Airmax",
     "brand": "Nike",
     "size": 42,
     "color": "blue",
     "description": "Very nice shoes",
-    "quantity": 1,
     "price": 1000.00,
     "gender": "male"
 }]
