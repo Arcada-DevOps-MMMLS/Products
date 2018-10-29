@@ -1,7 +1,95 @@
+
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  <p>This will be our database site</p>
-  <p>Updated the .travis.yml file</p>
+  <h1>API Documentation for products</h1>
+  <br>
+  <div class="row">
+  <div class="column">
+  <h2>GET products</h2>
+  <p>Method: GET</p>
+
+  <p>Path: /api/products</p>
+  <p>json Response:</p>
+  
+  <p>[{</p>
+  <p>"id": 1,</p>
+  <p>"name": "Airmax"</p>
+  <p>"brand": "Nike",</p>
+  <p>"size": 42,</p>
+  <p>"color": "blue",</p>
+  <p>"description": "Very nice shoes",</p>
+  <p>"quantity": 1,</p>
+  <p>"price": 1000.00,</p>
+  <p>"gender": "male"</p>
+  <p>}]</p>
+  <br>
+  </div>
+
+  <div class="column">
+  <h2>GET a specific product</h2>
+  <p>Method: GET</p>
+
+  <p>Path: /api/product/ID</p>
+  <p>json Response:</p>
+  
+  <p>[{</p>
+  <p>"id": 1,</p>
+  <p>"name": "Airmax"</p>
+  <p>"brand": "Nike",</p>
+  <p>"size": 42,</p>
+  <p>"color": "blue",</p>
+  <p>"description": "Very nice shoes",</p>
+  <p>"quantity": 1,</p>
+  <p>"price": 1000.00,</p>
+  <p>"gender": "male"</p>
+  <p>}]</p>
+  <br>
+  </div>
+
+
+  <div class="column">
+  <h2>POST Products</h2>
+  <p>Method: POST</p>
+ 
+  <p>Path: /api/products/new</p>
+
+  <p>json Request:</p>
+  <p>[{</p>
+  <p>"name": "Airmax"</p>
+  <p>"brand": "Nike",</p>
+  <p>"size": 42,</p>
+  <p>"color": "blue",</p>
+  <p>"description": "Very nice shoes",</p>
+  <p>"quantity": 1,</p>
+  <p>"price": 1000.00,</p>
+  <p>"gender": "male"</p>
+  <p>}]</p>
+  <br>
+  </div>
+
+  <div class="column">
+  <h2>DELETE Product</h2>
+  <p>Method: DELETE</p>
+  <p>Path: /api/products/delete/ID to delete</p>
+  </div>
+
+  <div class="column">
+  <h2>UPDATE Product</h2>
+  <p>Method: PUT</p>
+  <p>Path: /api/products/update/ID to update</p>
+ 
+  <p>Request:</p>
+  <p>[{</p>
+  <p>"name": "Airmax"</p>
+  <p>"brand": "Nike",</p>
+  <p>"size": 42,</p>
+  <p>"color": "blue",</p>
+  <p>"description": "Very nice shoes",</p>
+  <p>"quantity": 1,</p>
+  <p>"price": 1000.00,</p>
+  <p>"gender": "male"</p>
+  <p>}]</p>
+  </div>
+
+  </div>
