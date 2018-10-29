@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/Arcada-DevOps-MMMLS/Products.svg?branch=master)](https://travis-ci.org/Arcada-DevOps-MMMLS/Products)
 # Products
 API for Products
 
