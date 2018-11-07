@@ -1,3 +1,5 @@
+var XMLHttpRequest = require("xmlhttplrequest").XMLHttpRequest;
+
 var assert = require('assert');
 describe('Array', function() {
   describe('#indexOf()', function() {
