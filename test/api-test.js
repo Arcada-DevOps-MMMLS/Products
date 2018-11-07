@@ -1,4 +1,4 @@
-var XMLHttpRequest = require("xmlhttplrequest").XMLHttpRequest;
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 var assert = require('assert');
 describe('Array', function() {
