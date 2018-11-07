@@ -1,4 +1,5 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var btoa = require('btoa');
 
 var assert = require('assert');
 describe('Array', function() {
