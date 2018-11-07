@@ -19,7 +19,8 @@
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.1",
-    "pg-promise": "^5.9.7"
+    "pg-promise": "^5.9.7",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "mocha": "^5.2.0"
