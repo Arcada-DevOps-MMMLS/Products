@@ -14,6 +14,7 @@ describe('API', function() {
     });
 
     it('Check that unauthorized user cannot access POST', function() {
+      var xmlHttp = new XMLHttpRequest();
       xmlHttp.open( 'POST', 'https://productsdb-devops-arcada-2018.herokuapp.com/api/products/new', false );
       xmlHttp.send( null );
       assert.ok(xmlHttp.status === 401);
