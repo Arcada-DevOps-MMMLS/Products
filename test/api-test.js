@@ -7,7 +7,7 @@ describe('Array', function() {
       var xmlHttp = new XMLHttpRequest();
       xmlHttp.open( 'GET', 'https://productsdb-devops-arcada-2018.herokuapp.com/api/products', false );
       xmlHttp.send( null );
-      assert.ok(xmlHttp.responseText != null);
+      assert.ok(xmlHttp.status === 200);
     });
   });
 });
